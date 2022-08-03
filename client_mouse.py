@@ -2,7 +2,7 @@ def main():
     import socket
     from pynput import mouse
 
-    HOST = "192.168.50.1"
+    HOST = "192.168.50.1" # change host to yours
     PORT = 5000
     FORMAT = "utf-8"
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
